@@ -20,7 +20,7 @@ lis= {'a':[3,3,2],'b':[2,3,2],'c':[1,2,3],'d':[1,2,1],'e':[1,1,1],'f':[3,1,1],'g
 
 window = Tk()
 window.title("Ciphering app")
-window.geometry('350x200')
+window.geometry('300x100')
 lbl = Label(window, text="Input your word")
 lbl.grid(column=0, row=0)
 txt = Entry(window,width=20)
@@ -65,15 +65,15 @@ def encode_key(inp):
     return out
 
 def decode_input(text,key=5):
-    print("init",text)
+#    print("init",text)
     te=str(text)
     te=str(base64.b64decode(str.encode(te)))
-    print("")
-    print("te real:"+te)
+#    print("")
+#    print("te real:"+te)
     te=str(te)
     te=te[2:len(te)-1]
     text=te
-    print("TXT:",text)
+#    print("TXT:",text)
     decoded=""
     
     for i in range(0,len(text),key):
@@ -82,18 +82,18 @@ def decode_input(text,key=5):
 
     
 def decode_key(enc,key=5):
-    print(enc)
+#    print(enc)
     cyp=""
     dec=""
     for i in enc:
         for j in range(3):
             cyp+= str(lis[i][j])
-    print(cyp)
+#    print(cyp)
     itr=int(len(cyp)/3)
     for i in range(0,itr):
 #        for k in range(i,(2*i)+1,itr):
         dec+=str(list(lis.keys())[list(lis.values()).index([int(cyp[i]),int(cyp[i+itr]),int(cyp[i+(2*itr)])])])
-    print (dec)
+#    print (dec)
     return dec 
      
 btn = Button(window, text="GO", command=clicked)
